@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.AbstractDocument;
@@ -139,7 +140,7 @@ public class MainForm extends javax.swing.JFrame {
         BackgroundPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
-        jLabel1.setText("XDesing S.A");
+        jLabel1.setText("Salud Plus S.A");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         PedidosFrame.setBackground(new java.awt.Color(255, 255, 255));
@@ -779,15 +780,13 @@ public class MainForm extends javax.swing.JFrame {
         BackgroundPanelLayout.setHorizontalGroup(
             BackgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundPanelLayout.createSequentialGroup()
-                .addGroup(BackgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BackgroundPanelLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(BackgroundPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(PedidosFrame)))
+                .addContainerGap()
+                .addComponent(PedidosFrame)
                 .addContainerGap())
+            .addGroup(BackgroundPanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         BackgroundPanelLayout.setVerticalGroup(
             BackgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1112,7 +1111,16 @@ public class MainForm extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new MainForm().setVisible(true);
